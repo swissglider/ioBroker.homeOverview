@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "homeOverview",
-        "version": "0.0.1.1",
+        "version": "0.0.2",
         "title": "HomeOverview Adapter",
         "desc": "Display an overview of your home",
         "authors": [
