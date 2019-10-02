@@ -25,8 +25,7 @@
     "type": "git",
     "url": "https://github.com/swissglider/ioBroker.homeOverview"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@iobroker/testing": "^1.2.5",
     "@types/chai": "^4.1.7",
