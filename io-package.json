@@ -1,38 +1,73 @@
 {
-    "common": {
-        "name": "homeOverview",
-        "version": "0.0.2",
+	"common": {
+		"name": "homeOverview",
+		"version": "0.0.3",
         "title": "HomeOverview Adapter",
         "desc": "Display an overview of your home",
         "authors": [
             "Swissglider <swissglider@github.com>"
         ],
-        "platform": "Javascript/Node.js",
-        "mode": "daemon",
-        "icon": "homeOverview.jpg",
-        "materialize": true,
-        "enabled": true,
-        "extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.homeOverview/master/admin/homeOverview.jpg",
-        "keywords": [
-            "home",
+		"news": {
+			"0.0.3": {
+				"en": "initial release",
+				"de": "Erstveröffentlichung"
+			}
+		},
+		"titleLang": {
+			"en": "HomeOverview Adapter (TypeScript)"
+		},
+		"desc": {
+			"en": "HomeOverview Adapter",
+			"de": "HomeOverview Adapter"
+		},
+		"keywords": [
+			"ioBroker",
+			"home",
             "overview",
-            "home visualization"
-        ],
-        "readme": "https://github.com/ioBroker/ioBroker.zeptrion/blob/master/README.md",
-        "localLink":                "%web_protocol%://%ip%:%web_port%/homeOverview/index.html",
-        "loglevel": "info",
-        "type": "lighting",
-        "license": "MIT",
+            "home visualization",
+			"Smart Home",
+			"home automation"
+		],
+		"license": "MIT",
+		"platform": "Javascript/Node.js",
+		"main": "build/main.js",
+		"icon": "homeOverview.png",
+		"enabled": true,
+		"extIcon": "https://raw.githubusercontent.com/ioBroker/ioBroker.homeOverview/master/admin/homeOverview.jpg",
+		"readme": "https://github.com/ioBroker/ioBroker.zeptrion/blob/master/README.md",
+		"loglevel": "info",
+		"mode": "daemon",
+		"type": "general",
+		"compact": true,
+		"materialize": true,
+		"materializeTab": true,
+		"adminTab": {
+			"singleton": true,
+			"name": {
+				"en": "HomeOverview Adapter (TypeScript)",
+				"de": "HomeOverview Adapter (TypeScript)",
+				"ru": "Шаблон (TypeScript)"
+			},
+			"link": "",
+			"fa-icon": "info"
+		},
+		"supportCustoms": true,
+		"dependencies": [
+			{
+				"js-controller": ">=1.4.2"
+			}
+		]
+	},
+	"native": {
+		"option1": true,
+		"option2": "42"
+	},
+	"objects": [],
+	"instanceObjects": [],
+	"localLink":                "%web_protocol%://%ip%:%web_port%/homeOverview/index.html",
         "messagebox": true,
         "subscribe": "messagebox",
         "restartAdapters": [
             "vis"
         ]
-    },
-    "native": {
-        "mdnsSearchTime": 10,
-        "zeptrionBlindMoveTime": 500,
-        "zeptrionDimmerDimTime": 500
-    },
-    "objects": []
 }

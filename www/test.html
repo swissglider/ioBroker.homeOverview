@@ -14,10 +14,11 @@
 
 <script type="text/javascript">
     var namespace  = 'homeOverview.0';
-    // var connectionLink = 'http://192.168.90.1:8082';
-    var connectionLink = location.origin;
+    var connectionLink = 'http://192.168.90.1:8082';
+    //var connectionLink = location.origin;
     servConn.namespace   = namespace;
     servConn._useStorage = false;
+
 
     var states = [];
     servConn.init({
@@ -33,11 +34,12 @@
                     for (var id in _states) {
                         count++;
                         if(id == "javascript.0.test_table2"){
-                            console.log('NEW VALUE of ' + id + ': ' + JSON.stringify(_states[id]));
+                            //console.log('NEW VALUE of ' + id + ': ' + JSON.stringify(_states[id]));
                         }
                     }
                     console.log('Received ' + count + ' states.');
                     states = _states;
+                    getStarted();
                 });
             } else {
                 console.log('disconnected');
@@ -58,5 +60,36 @@
             window.alert(_('Cannot execute %s for %s, because of insufficient permissions', err.command, err.arg), _('Insufficient permissions'), 'alert', 600);
         }
     });
+    function getStarted(){
+        servConn.clearCache();
+        servConn.getConfig(true, function(err, _config){
+            console.log("getConfig()")
+            if(_config){
+                console.log(_config);
+            } else {
+                console.log("Config could not be loaded: " + err)
+            }
+        });
+        servConn.getLiveHost(function(bla){
+            console.log("getLiveHost");
+            console.log(bla);
+        });
+        servConn.readProjects(function(err, _projects){
+            console.log("readProjects()")
+            if(_projects){
+                console.log(_projects);
+            } else {
+                console.log("Config could not be loaded: " + err)
+            }
+        });
+        servConn.readDir("/homeOverview", function(err, _data){
+            console.log("readDir()")
+            if(_data){
+                console.log(_data);
+            } else {
+                console.log("Config could not be loaded: " + err)
+            }
+        });
+    }
 </script>
 </body>

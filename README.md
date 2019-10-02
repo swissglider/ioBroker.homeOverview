@@ -22,28 +22,32 @@ This section is intended for the developer. It can be deleted later
 You are almost done, only a few steps left:
 1. Create a new repository on GitHub with the name `ioBroker.template`
 1. Initialize the current folder as a new git repository:  
-    ```bash
-    git init
-    git add .
-    git commit -m "Initial commit"
-    ```
+	```bash
+	git init
+	git add .
+	git commit -m "Initial commit"
+	```
 1. Link your local repository with the one on GitHub:  
-    ```bash
-    git remote add origin https://github.com/Author/ioBroker.template
-    ```
+	```bash
+	git remote add origin https://github.com/Author/ioBroker.template
+	```
 
 1. Push all files to the GitHub repo:  
-    ```bash
-    git push origin master
-    ```
-1. Head over to [main.js](main.js) and start programming!
+	```bash
+	git push origin master
+	```
+1. Head over to [src/main.ts](src/main.ts) and start programming!
 
 ### Scripts in `package.json`
 Several npm scripts are predefined for your convenience. You can run them using `npm run <scriptname>`
 | Script name | Description                                              |
 |-------------|----------------------------------------------------------|
-| `test:js`   | Executes the tests you defined in `*.test.js` files.     |
+| `build`    | Re-compile the TypeScript sources.                       |
+| `watch`     | Re-compile the TypeScript sources and watch for changes. |
+| `test:ts`   | Executes the tests you defined in `*.test.ts` files.     |
 | `test:package`    | Ensures your `package.json` and `io-package.json` are valid. |
+| `test:unit`       | Tests the adapter startup with unit tests (fast, but might require module mocks to work). |
+| `test:integration`| Tests the adapter startup with an actual instance of ioBroker. |
 | `test` | Performs a minimal test run on package files and your tests. |
 | `coverage` | Generates code coverage using your test files. |
 
@@ -64,15 +68,15 @@ See the documentation of [ioBroker.repositories](https://github.com/ioBroker/ioB
 ### Test the adapter manually on a local ioBroker installation
 In order to install the adapter locally without publishing, the following steps are recommended:
 1. Create a tarball from your dev directory:  
-    ```bash
-    npm pack
-    ```
+	```bash
+	npm pack
+	```
 1. Upload the resulting file to your ioBroker host
 1. Install it locally (The paths are different on Windows):
-    ```bash
-    cd /opt/iobroker
-    npm i /path/to/tarball.tgz
-    ```
+	```bash
+	cd /opt/iobroker
+	npm i /path/to/tarball.tgz
+	```
 
 For later updates, the above procedure is not necessary. Just do the following:
 1. Overwrite the changed files in the adapter directory (`/opt/iobroker/node_modules/iobroker.template`)
