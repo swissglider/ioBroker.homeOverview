@@ -1,18 +1,18 @@
-![Logo](admin/template.png)
-# ioBroker.template
+![Logo](admin/homeoverview.png)
+# ioBroker.homeoverview
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.template.svg)](https://www.npmjs.com/package/iobroker.template)
-[![Downloads](https://img.shields.io/npm/dm/iobroker.template.svg)](https://www.npmjs.com/package/iobroker.template)
-[![Dependency Status](https://img.shields.io/david/Author/iobroker.template.svg)](https://david-dm.org/Author/iobroker.template)
-[![Known Vulnerabilities](https://snyk.io/test/github/Author/ioBroker.template/badge.svg)](https://snyk.io/test/github/Author/ioBroker.template)
+[![NPM version](http://img.shields.io/npm/v/iobroker.homeoverview.svg)](https://www.npmjs.com/package/iobroker.homeoverview)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.homeoverview.svg)](https://www.npmjs.com/package/iobroker.homeoverview)
+[![Dependency Status](https://img.shields.io/david/Swissglider/iobroker.homeoverview.svg)](https://david-dm.org/Swissglider/iobroker.homeoverview)
+[![Known Vulnerabilities](https://snyk.io/test/github/Swissglider/ioBroker.homeoverview/badge.svg)](https://snyk.io/test/github/Swissglider/ioBroker.homeoverview)
 
-[![NPM](https://nodei.co/npm/iobroker.template.png?downloads=true)](https://nodei.co/npm/iobroker.template/)
+[![NPM](https://nodei.co/npm/iobroker.homeoverview.png?downloads=true)](https://nodei.co/npm/iobroker.homeoverview/)
 
-**Tests:**: [![Travis-CI](http://img.shields.io/travis/Author/ioBroker.template/master.svg)](https://travis-ci.org/Author/ioBroker.template)
+**Tests:**: [![Travis-CI](http://img.shields.io/travis/Swissglider/ioBroker.homeoverview/master.svg)](https://travis-ci.org/Swissglider/ioBroker.homeoverview)
 
-## template adapter for ioBroker
+## homeoverview adapter for ioBroker
 
-Template for adapter development
+HomeOverview Adapter
 
 ## Developer manual
 This section is intended for the developer. It can be deleted later
@@ -20,22 +20,22 @@ This section is intended for the developer. It can be deleted later
 ### Getting started
 
 You are almost done, only a few steps left:
-1. Create a new repository on GitHub with the name `ioBroker.template`
+1. Create a new repository on GitHub with the name `ioBroker.homeoverview`
 1. Initialize the current folder as a new git repository:  
-	```bash
-	git init
-	git add .
-	git commit -m "Initial commit"
-	```
+    ```bash
+    git init
+    git add .
+    git commit -m "Initial commit"
+    ```
 1. Link your local repository with the one on GitHub:  
-	```bash
-	git remote add origin https://github.com/Author/ioBroker.template
-	```
+    ```bash
+    git remote add origin https://github.com/Swissglider/ioBroker.homeoverview
+    ```
 
 1. Push all files to the GitHub repo:  
-	```bash
-	git push origin master
-	```
+    ```bash
+    git push origin master
+    ```
 1. Head over to [src/main.ts](src/main.ts) and start programming!
 
 ### Scripts in `package.json`
@@ -68,29 +68,29 @@ See the documentation of [ioBroker.repositories](https://github.com/ioBroker/ioB
 ### Test the adapter manually on a local ioBroker installation
 In order to install the adapter locally without publishing, the following steps are recommended:
 1. Create a tarball from your dev directory:  
-	```bash
-	npm pack
-	```
+    ```bash
+    npm pack
+    ```
 1. Upload the resulting file to your ioBroker host
 1. Install it locally (The paths are different on Windows):
-	```bash
-	cd /opt/iobroker
-	npm i /path/to/tarball.tgz
-	```
+    ```bash
+    cd /opt/iobroker
+    npm i /path/to/tarball.tgz
+    ```
 
 For later updates, the above procedure is not necessary. Just do the following:
-1. Overwrite the changed files in the adapter directory (`/opt/iobroker/node_modules/iobroker.template`)
-1. Execute `iobroker upload template` on the ioBroker host
+1. Overwrite the changed files in the adapter directory (`/opt/iobroker/node_modules/iobroker.homeoverview`)
+1. Execute `iobroker upload homeoverview` on the ioBroker host
 
 ## Changelog
 
 ### 0.0.1
-* (Author) initial release
+* (Swissglider) initial release
 
 ## License
 MIT License
 
-Copyright (c) 2019 Author <author@mail.com>
+Copyright (c) 2019 Swissglider <swissglider@github.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

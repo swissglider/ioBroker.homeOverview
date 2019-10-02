@@ -7,7 +7,7 @@ process.env.TS_NODE_PROJECT = "tsconfig.json";
 
 // Don't silently swallow unhandled rejections
 process.on("unhandledRejection", (e) => {
-	throw e;
+    throw e;
 });
 
 // enable the should interface with sinon
