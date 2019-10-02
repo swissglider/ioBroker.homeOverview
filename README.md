@@ -36,18 +36,14 @@ You are almost done, only a few steps left:
     ```bash
     git push origin master
     ```
-1. Head over to [src/main.ts](src/main.ts) and start programming!
+1. Head over to [main.js](main.js) and start programming!
 
 ### Scripts in `package.json`
 Several npm scripts are predefined for your convenience. You can run them using `npm run <scriptname>`
 | Script name | Description                                              |
 |-------------|----------------------------------------------------------|
-| `build`    | Re-compile the TypeScript sources.                       |
-| `watch`     | Re-compile the TypeScript sources and watch for changes. |
-| `test:ts`   | Executes the tests you defined in `*.test.ts` files.     |
+| `test:js`   | Executes the tests you defined in `*.test.js` files.     |
 | `test:package`    | Ensures your `package.json` and `io-package.json` are valid. |
-| `test:unit`       | Tests the adapter startup with unit tests (fast, but might require module mocks to work). |
-| `test:integration`| Tests the adapter startup with an actual instance of ioBroker. |
 | `test` | Performs a minimal test run on package files and your tests. |
 | `coverage` | Generates code coverage using your test files. |
 

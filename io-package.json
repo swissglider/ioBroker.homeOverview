@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "homeoverview",
-        "version": "0.0.5",
+        "version": "0.0.6",
         "news": {
             "0.0.1": {
                 "en": "initial release",
@@ -54,7 +54,7 @@
         ],
         "license": "MIT",
         "platform": "Javascript/Node.js",
-        "main": "build/main.js",
+        "main": "main.js",
         "icon": "homeoverview.png",
         "enabled": true,
         "extIcon": "https://raw.githubusercontent.com/Swissglider/ioBroker.homeoverview/master/admin/homeoverview.png",

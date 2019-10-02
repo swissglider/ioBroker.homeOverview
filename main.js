@@ -1,32 +1,22 @@
+"use strict";
+
 /*
  * Created with @iobroker/create-adapter v1.16.0
  */
 
 // The adapter-core module gives you access to the core ioBroker functions
 // you need to create an adapter
-import * as utils from "@iobroker/adapter-core";
+const utils = require("@iobroker/adapter-core");
 
 // Load your modules here, e.g.:
-// import * as fs from "fs";
-
-// Augment the adapter.config object with the actual types
-// TODO: delete this in the next version
-declare global {
-    // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace ioBroker {
-        interface AdapterConfig {
-            // Define the shape of your options here (recommended)
-            option1: boolean;
-            option2: string;
-            // Or use a catch-all approach
-            [key: string]: any;
-        }
-    }
-}
+// const fs = require("fs");
 
 class Homeoverview extends utils.Adapter {
 
-    public constructor(options: Partial<ioBroker.AdapterOptions> = {}) {
+    /**
+     * @param {Partial<ioBroker.AdapterOptions>} [options={}]
+     */
+    constructor(options) {
         super({
             ...options,
             name: "homeoverview",
@@ -41,7 +31,7 @@ class Homeoverview extends utils.Adapter {
     /**
      * Is called when databases are connected and adapter received configuration.
      */
-    private async onReady(): Promise<void> {
+    async onReady() {
         // Initialize your adapter here
 
         // Reset the connection indicator during startup
@@ -96,8 +86,9 @@ class Homeoverview extends utils.Adapter {
 
     /**
      * Is called when adapter shuts down - callback has to be called under any circumstances!
+     * @param {() => void} callback
      */
-    private onUnload(callback: () => void): void {
+    onUnload(callback) {
         try {
             this.log.info("cleaned everything up...");
             callback();
@@ -108,8 +99,10 @@ class Homeoverview extends utils.Adapter {
 
     /**
      * Is called if a subscribed object changes
+     * @param {string} id
+     * @param {ioBroker.Object | null | undefined} obj
      */
-    private onObjectChange(id: string, obj: ioBroker.Object | null | undefined): void {
+    onObjectChange(id, obj) {
         if (obj) {
             // The object was changed
             this.log.info(`object ${id} changed: ${JSON.stringify(obj)}`);
@@ -121,8 +114,10 @@ class Homeoverview extends utils.Adapter {
 
     /**
      * Is called if a subscribed state changes
+     * @param {string} id
+     * @param {ioBroker.State | null | undefined} state
      */
-    private onStateChange(id: string, state: ioBroker.State | null | undefined): void {
+    onStateChange(id, state) {
         if (state) {
             // The state was changed
             this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
@@ -135,8 +130,9 @@ class Homeoverview extends utils.Adapter {
     // /**
     //  * Some message was sent to this instance over message box. Used by email, pushover, text2speech, ...
     //  * Using this method requires "common.message" property to be set to true in io-package.json
+    //  * @param {ioBroker.Message} obj
     //  */
-    // private onMessage(obj: ioBroker.Message): void {
+    // onMessage(obj) {
     // 	if (typeof obj === "object" && obj.message) {
     // 		if (obj.command === "send") {
     // 			// e.g. send email or pushover or whatever
@@ -150,10 +146,14 @@ class Homeoverview extends utils.Adapter {
 
 }
 
+// @ts-ignore parent is a valid property on module
 if (module.parent) {
     // Export the constructor in compact mode
-    module.exports = (options: Partial<ioBroker.AdapterOptions> | undefined) => new Homeoverview(options);
+    /**
+     * @param {Partial<ioBroker.AdapterOptions>} [options={}]
+     */
+    module.exports = (options) => new Homeoverview(options);
 } else {
     // otherwise start the instance directly
-    (() => new Homeoverview())();
+    new Homeoverview();
 }
