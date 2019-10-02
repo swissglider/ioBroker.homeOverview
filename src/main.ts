@@ -24,12 +24,12 @@ declare global {
 	}
 }
 
-class Template extends utils.Adapter {
+class HomeOverview extends utils.Adapter {
 
 	public constructor(options: Partial<ioBroker.AdapterOptions> = {}) {
 		super({
 			...options,
-			name: "template",
+			name: "homeOverview",
 		});
 		this.on("ready", this.onReady.bind(this));
 		this.on("objectChange", this.onObjectChange.bind(this));
@@ -149,8 +149,8 @@ class Template extends utils.Adapter {
 
 if (module.parent) {
 	// Export the constructor in compact mode
-	module.exports = (options: Partial<ioBroker.AdapterOptions> | undefined) => new Template(options);
+	module.exports = (options: Partial<ioBroker.AdapterOptions> | undefined) => new HomeOverview(options);
 } else {
 	// otherwise start the instance directly
-	(() => new Template())();
+	(() => new HomeOverview())();
 }

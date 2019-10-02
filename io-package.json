@@ -1,7 +1,7 @@
 {
 	"common": {
 		"name": "homeOverview",
-		"version": "0.0.3",
+		"version": "0.0.4",
         "title": "HomeOverview Adapter",
         "desc": "Display an overview of your home",
         "authors": [
@@ -14,7 +14,7 @@
 			}
 		},
 		"titleLang": {
-			"en": "HomeOverview Adapter (TypeScript)"
+			"en": "HomeOverview Adapter"
 		},
 		"desc": {
 			"en": "HomeOverview Adapter",
