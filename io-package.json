@@ -1,7 +1,7 @@
 {
     "common": {
         "name": "homeoverview",
-        "version": "0.0.6",
+        "version": "0.0.7",
         "news": {
             "0.0.1": {
                 "en": "initial release",
@@ -64,6 +64,7 @@
         "type": "visualization",
         "compact": true,
         "materialize": true,
+        "localLink":                "%web_protocol%://%ip%:%web_port%/homeoverview/index.html",
         "dependencies": [
             {
                 "js-controller": ">=1.4.2"

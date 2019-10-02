@@ -82,6 +82,42 @@ class Homeoverview extends utils.Adapter {
 
         result = await this.checkGroupAsync("admin", "admin");
         this.log.info("check group user admin group admin: " + result);
+
+        this.getForeignStates("*", (err,states) => {
+            if(err){
+                this.log.error(err);
+            } else{
+                Object.entries(states).forEach(function (id, value) {
+                    //console.log(id);
+                    //console.log(value);
+                });
+            }
+        });
+
+        var objects = await this.getForeignObjectsAsync("*");
+        Object.entries(objects).forEach(function (objR, ind) {
+            // console.log(obj);
+            //console.log(objR[1].type + " : " + objR[0]);
+            if(objR[1].type == "channel"){
+                console.log(objR);
+                //console.log(objR[0] + " : " + objR[1].common.name);
+            }
+        });
+
+        this.getForeignObjects("*", "channel", "rooms", (o1,o2) => {
+            console.log(o1);
+            console.log(o2);
+        })
+
+        this.getChannels(function(channels){
+            console.log(channels);
+            
+        });
+        
+
+        this.getForeignState("*", function(err,state){
+
+        });
     }
 
     /**

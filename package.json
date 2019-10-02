@@ -1,28 +1,38 @@
 {
-  "name": "iobroker.homeoverview",
-  "version": "0.0.6",
-  "description": "HomeOverview Adapter",
+  "_from": "https://github.com/swissglider/ioBroker.homeOverview/tarball/master",
+  "_id": "iobroker.homeoverview@0.0.7",
+  "_inBundle": false,
+  "_integrity": "sha512-deQ/p3K5gVoM9LDQn0NIxpxqsXwMK7DWkEe6G/QIOyxz+TVjERc8fp76YAiwWnLyVr0/qdLvmb2kJXPMewqWpw==",
+  "_location": "/iobroker.homeoverview",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "remote",
+    "raw": "https://github.com/swissglider/ioBroker.homeOverview/tarball/master",
+    "rawSpec": "https://github.com/swissglider/ioBroker.homeOverview/tarball/master",
+    "saveSpec": "https://github.com/swissglider/ioBroker.homeOverview/tarball/master",
+    "fetchSpec": "https://github.com/swissglider/ioBroker.homeOverview/tarball/master"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://github.com/swissglider/ioBroker.homeOverview/tarball/master",
+  "_shasum": "3daeb5c8d7547a1229ce8b096af4a046f52ebab3",
+  "_spec": "https://github.com/swissglider/ioBroker.homeOverview/tarball/master",
+  "_where": "/",
   "author": {
     "name": "Swissglider",
     "email": "swissglider@github.com"
   },
-  "homepage": "https://github.com/Swissglider/ioBroker.homeoverview",
-  "license": "MIT",
-  "keywords": [
-    "ioBroker",
-    "home",
-    "overview",
-    "home visualization",
-    "Smart Home",
-    "home automation"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Swissglider/ioBroker.homeoverview"
+  "bugs": {
+    "url": "https://github.com/Swissglider/ioBroker.homeoverview/issues"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "@iobroker/adapter-core": "^1.0.3"
   },
+  "deprecated": false,
+  "description": "HomeOverview Adapter",
   "devDependencies": {
     "@iobroker/testing": "^1.2.5",
     "@types/chai": "^4.2.3",
@@ -43,17 +53,29 @@
     "sinon": "^7.5.0",
     "sinon-chai": "^3.3.0"
   },
+  "homepage": "https://github.com/Swissglider/ioBroker.homeoverview",
+  "keywords": [
+    "ioBroker",
+    "home",
+    "overview",
+    "home visualization",
+    "Smart Home",
+    "home automation"
+  ],
+  "license": "MIT",
   "main": "main.js",
+  "name": "iobroker.homeoverview",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Swissglider/ioBroker.homeoverview.git"
+  },
   "scripts": {
+    "lint": "eslint",
+    "test": "npm run test:js && npm run test:package",
+    "test:integration": "mocha test/integration --exit",
     "test:js": "mocha --opts test/mocha.custom.opts",
     "test:package": "mocha test/package --exit",
-    "test:unit": "mocha test/unit --exit",
-    "test:integration": "mocha test/integration --exit",
-    "test": "npm run test:js && npm run test:package",
-    "lint": "eslint"
+    "test:unit": "mocha test/unit --exit"
   },
-  "bugs": {
-    "url": "https://github.com/Swissglider/ioBroker.homeoverview/issues"
-  },
-  "readmeFilename": "README.md"
+  "version": "0.0.6"
 }
