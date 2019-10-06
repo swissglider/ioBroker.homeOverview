@@ -26,18 +26,16 @@ MVP &rightarrow; Show simple dynamic state change (angular - socket.io adapter)
 
 ## Sprint 1 - Documentation
 
-# Sprint 1
-
 >**Node**
 States are all Observibles, so they are always up to date
 
-0.   initiate and setup the connection to ioBroker
-1.   load and store states/objects/enums   
+1.   initiate and setup the connection to ioBroker
+2.   load and store states/objects/enums   
   1.1. load all states/objects and enums from ioBroker    
   1.2. store the Obeserver to all live states/objects/enums to the DataStore   
-2.   after initiation, homepage.component askes for the counter state
-3.   after changing state on the GUI it has to be set
-4.   and safe it to the ioBroker
+3.   after initiation, homepage.component askes for the counter state
+4.   after changing state on the GUI it has to be set
+5.   and safe it to the ioBroker
 
 >:arrow_forward: because the counter state saved on the state-store is a live observer,
 and the ioBroker.service monitors all changes,
