@@ -1131,7 +1131,8 @@ export class IOBrokerConnection {
         that.getStates(_hosts, function(err, states) {
           for (var h in states) {
             if (states[h].val) {
-              cb(h.substring(0, h.length - ".alive".length));
+              const return_value = h.substring(0, h.length - ".alive".length);
+              cb(return_value);
               return;
             }
           }

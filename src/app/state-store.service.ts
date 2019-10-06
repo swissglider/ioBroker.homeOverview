@@ -119,4 +119,8 @@ export class StateStoreService {
     }
     return this.storeStateMap.get(id);
   }
+
+  public getConfig() {
+    return this.configObs;
+  }
 }

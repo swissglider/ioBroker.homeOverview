@@ -28,6 +28,7 @@ export class IobrokerService {
   private updatedState: Subject<[any, any]> = new BehaviorSubject<[any, any]>([null, null]);
   private updatedObject: Subject<[any, any]> = new BehaviorSubject<[any, any]>([null, null]);
   private newError: Subject<[string]> = new BehaviorSubject<[string]>(null);
+  private liveHost: Subject<string> = new BehaviorSubject<string>('');
 
   constructor(private socket: Socket) {
     this.servConn = new IOBrokerConnection(namespace, this.socket);
@@ -60,6 +61,20 @@ export class IobrokerService {
   getObjectTree(): Observable < string > {
     console.log('Service: getObjectTree');
     return of('ioBroker');
+  }
+
+  getLiveHost(){
+    const waitConnected = () => {
+      if (!this.servConn.getIsConnected()) {
+        setTimeout(waitConnected, 50);
+      } else {
+        this.servConn.getLiveHost((hostName) => {
+          this.liveHost.next(hostName);
+        })
+      }
+    };
+    waitConnected();
+    return this.liveHost;
   }
 
   getIsConnected(): Observable < any > {

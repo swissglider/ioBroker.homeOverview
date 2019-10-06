@@ -10,7 +10,7 @@ import { StateStoreService } from '../state-store.service';
 })
 export class HomepageComponent implements OnInit {
 
-  objectTree: string;
+  hostName: string;
   isConnected: boolean;
   updatedStateID: string;
   updatedState: string;
@@ -20,23 +20,23 @@ export class HomepageComponent implements OnInit {
   constructor(private iobrokerService: IobrokerService, private stateStoreService: StateStoreService) { }
 
   ngOnInit() {
-    this.getObjectTree();
-    this.getIsConnected();
+    this.getInitInformations();
     this.getUpdatedState();
     this.getNewError();
     this.getCounter();
   }
 
-  getObjectTree(): void {
-    this.iobrokerService.getObjectTree()
-      .subscribe(objectTree => this.objectTree = objectTree);
-  }
-
-  getIsConnected(): void {
+  getInitInformations(): void {
+    this.iobrokerService.getLiveHost()
+      .subscribe(hostName => this.hostName = hostName);
     this.iobrokerService.getIsConnected()
       .subscribe((isConnected) => {
         this.isConnected = isConnected;
       });
+    this.stateStoreService.getConfig()
+    .subscribe((config) => {
+      console.log(config);
+    }); 
   }
 
   getUpdatedState(): void {

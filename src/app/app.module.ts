@@ -8,15 +8,13 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 
 import {url} from './iobroker.service';
-import { MyCounterComponent } from './my-counter/my-counter.component';
 import { counterReducer } from './counter.reducer';
 import { config } from './iobroker.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomepageComponent,
-    MyCounterComponent
+    HomepageComponent
   ],
   imports: [
     BrowserModule,
