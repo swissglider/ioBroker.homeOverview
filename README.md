@@ -49,8 +49,6 @@ the state in the store is updated automaticaly
 
 ![cached image](https://plantuml-server.kkeisuke.app/svg/ZPB1JiCm343l_Wfhf_NGb06d7j1Wdy0H8PIrfWHQkqfSBcZ_JjPMj1jb8YShZj-pvMo3MgzTKmEyUjiGhkwvwchhNrRu1HZFqviqrDgAJ25DAqoipqF2oOEN3_8caFzq1PrTxuIP2dN2OoAgbDAWukcqfBHgzpP4-Up9Qj1FbPYXxDyZCGR4NJFK7k000BzxmJIzM-m5SxnAqB5JDCPWCMJwk1PRegrhx7qX6tGXEze2BFP_gfckSzoOpQZvYuXhooLsRNbC9PVuo_Ftaki4-mfioGSNDAvdbC7IvcQySrEEaLMHFlQoTOnsqh6IJowGbYQ_YItzOC8Sy_yjvNWxKG2sn6NyfDy0.svg)
 
-)
-
 
 
 ## License
