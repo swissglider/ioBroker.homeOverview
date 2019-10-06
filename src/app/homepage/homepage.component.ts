@@ -34,9 +34,7 @@ export class HomepageComponent implements OnInit {
         this.isConnected = isConnected;
       });
     this.stateStoreService.getConfig()
-    .subscribe((config) => {
-      console.log(config);
-    }); 
+    .subscribe((config) => {    }); 
   }
 
   getUpdatedState(): void {

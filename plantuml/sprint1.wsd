@@ -1,0 +1,21 @@
+@startuml
+
+frame "Angular_" {
+    [homepage.component]
+    [ioBroker.service]
+    [ioBrokerConnection]
+    [state-store.service]
+    database "state-store"{
+        [state / object / enum]
+    }
+}
+
+
+[ioBroker.service] --> [ioBrokerConnection] : 0) init ... connect ... load all states/objects/enums
+[state-store.service] --> [ioBroker.service] : 1.1) init all states/objects/enums (and updates)
+[state-store.service] --> [state / object / enum] : 1.2) store persistent states
+[homepage.component] --> [state-store.service] : 2) getState (getCounter)
+[homepage.component] --> [ioBroker.service] : 3) setState (setCounter)
+[ioBroker.service] --> [ioBrokerConnection]: 4) setState
+
+@enduml
