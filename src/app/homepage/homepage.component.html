@@ -1,0 +1,22 @@
+<h2>{{objectTree | uppercase}} Details</h2>
+
+<h2>Connected ? : {{isConnected}}</h2>
+<hr>
+<p>Counter: {{counter}}</p>
+<div>
+  <label>name:
+    <input [(ngModel)]="counter" placeholder="name" (change)="onChangeCounter(counter)"/>
+  </label>
+</div>
+<hr>
+<p>Updated State ID : {{updatedStateID}}</p>
+<p>State: {{updatedState}}</p>
+<hr>
+<p>Error: {{newError}}</p>
+<hr>
+<div>
+    <label>Detail:
+      <input [(ngModel)]="objectTree" placeholder="name"/>
+    </label>
+</div>
+<hr>
