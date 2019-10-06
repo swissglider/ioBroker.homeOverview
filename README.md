@@ -41,9 +41,9 @@ States are all Observibles, so they are always up to date
 
 >:arrow_forward: because the counter state saved on the state-store is a live observer,
 and the ioBroker.service monitors all changes,
-the state in the store is updated automaticaly
->:arrow_forward: ioBrokerConnection do handle the whole connection with the ioBroker
->:arrow_forward: ioBrokerConnection is an adaptation of the iobroker conn.js sample
+the state in the store is updated automaticaly   
+>:arrow_forward: ioBrokerConnection do handle the whole connection with the ioBroker    
+>:arrow_forward: ioBrokerConnection is an adaptation of the iobroker conn.js sample   
 >:arrow_forward: the ngx-socket-io is used
 
 
