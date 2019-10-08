@@ -12,7 +12,7 @@ export class StateStoreService {
   private storeStateMap = new Map(); // --> key (id) / value (State) <-- state is an observer
   private storeObjectMap = new Map(); // --> key (id) / value (Object) <-- object is an observer
   private storeEnumMap = new Map(); // --> key (id) / value (Enum) <-- enum is an observer
-  private configObs = new BehaviorSubject<any>(null); // --> config is a observer
+  private configObs$ = new BehaviorSubject< object >(null); // --> config is a observer
 
   constructor(private iobrokerService: IobrokerService) {
     // load all states into state map
@@ -37,8 +37,8 @@ export class StateStoreService {
       if (data.hasOwnProperty(id)) {
         const stateIO = data[id];
         if (!this.storeStateMap.has(id)) {
-          const tempStateOb = new BehaviorSubject<any>(stateIO);
-          this.storeStateMap.set(id, tempStateOb);
+          const tempStateOb$ = new BehaviorSubject<any>(stateIO);
+          this.storeStateMap.set(id, tempStateOb$);
         }
         this.storeStateMap.get(id).next(stateIO);
       }
@@ -47,8 +47,8 @@ export class StateStoreService {
     this.iobrokerService.getUpdatedState()
       .subscribe(([id, stateIO]) => {
         if (!this.storeStateMap.has(id)) {
-          const tempStateOb = new BehaviorSubject<any>(stateIO);
-          this.storeStateMap.set(id, tempStateOb);
+          const tempStateOb$ = new BehaviorSubject<any>(stateIO);
+          this.storeStateMap.set(id, tempStateOb$);
         }
         this.storeStateMap.get(id).next(stateIO);
       });
@@ -61,8 +61,8 @@ export class StateStoreService {
       if (data.hasOwnProperty(id)) {
         const objectIO = data[id];
         if (!this.storeObjectMap.has(id)) {
-          const tempObjectsOb = new BehaviorSubject<any>(objectIO);
-          this.storeObjectMap.set(id, tempObjectsOb);
+          const tempObjectsOb$ = new BehaviorSubject<any>(objectIO);
+          this.storeObjectMap.set(id, tempObjectsOb$);
         }
         this.storeObjectMap.get(id).next(objectIO);
       }
@@ -72,8 +72,8 @@ export class StateStoreService {
     this.iobrokerService.getUpdatedObject()
       .subscribe(([id, objectIO]) => {
         if (!this.storeObjectMap.has(id)) {
-          const tempObjectsOb = new BehaviorSubject<any>(objectIO);
-          this.storeObjectMap.set(id, tempObjectsOb);
+          const tempObjectsOb$ = new BehaviorSubject<any>(objectIO);
+          this.storeObjectMap.set(id, tempObjectsOb$);
         }
         this.storeObjectMap.get(id).next(objectIO);
       });
@@ -88,39 +88,29 @@ export class StateStoreService {
       if (data.hasOwnProperty(id)) {
         const enumIO = data[id];
         if (!this.storeEnumMap.has(id)) {
-          const tempEnumsOb = new BehaviorSubject<any>(enumIO);
-          this.storeEnumMap.set(id, tempEnumsOb);
+          const tempEnumsOb$ = new BehaviorSubject<any>(enumIO);
+          this.storeEnumMap.set(id, tempEnumsOb$);
         }
         this.storeEnumMap.get(id).next(enumIO);
       }
     }
-
-    // update all enum changes
-    // this.iobrokerService.getUpdatedEnum()
-    //   .subscribe(([id, enumIO]) => {
-    //     if (!this.storeEnumMap.has(id)) {
-    //       const tempEnumsOb = new BehaviorSubject<any>(enumIO);
-    //       this.storeEnumMap.set(id, tempEnumsOb);
-    //     }
-    //     this.storeEnumMap.get(id).next(enumIO);
-    //   });
   }
 
   private async loadAllConfigIntoObserverMap() {
     // load all config from ioBroker
     const data: any = await this.iobrokerService.getConfig();
-    this.configObs.next(data);
+    this.configObs$.next(data);
   }
 
-  public getStatePerID(id: string) {
+  public getStatePerID(id: string):  Subject< any > {
     if (!this.storeStateMap.has(id)) {
-      const tempStateOb = new BehaviorSubject<any>(null);
-      this.storeStateMap.set(id, tempStateOb);
+      const tempStateOb$ = new BehaviorSubject< object >(null);
+      this.storeStateMap.set(id, tempStateOb$);
     }
     return this.storeStateMap.get(id);
   }
 
-  public getConfig() {
-    return this.configObs;
+  public getConfig(): Subject< any > {
+    return this.configObs$;
   }
 }

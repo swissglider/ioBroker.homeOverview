@@ -6,7 +6,9 @@ import { StateStoreService } from '../state-store.service';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls: [
+    './homepage.component.css'
+  ]
 })
 export class HomepageComponent implements OnInit {
 
