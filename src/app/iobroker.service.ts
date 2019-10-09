@@ -13,7 +13,8 @@ export const config: SocketIoConfig = { url, options: {
   reconnectionDelay:              10000,
   reconnectionAttempts:           Infinity,
   reconnection:                   true,
-  forceNew:                       true
+  forceNew:                       true,
+  transports:                     ['websocket']
 } };
 
 @Injectable({

@@ -1,0 +1,16 @@
+.example-container>* {}
+
+.example-div-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+
+.example-header-image {
+  background-image: url('https://cdn3.iconfinder.com/data/icons/files-folders-line/100/spreadsheet-512.png');
+  background-size: cover;
+}

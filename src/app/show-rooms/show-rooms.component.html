@@ -1,0 +1,37 @@
+<div class="example-container example-div-center">
+  
+</div>
+<div class="example-container example-div-center">
+<mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>All Rooms</mat-card-title>
+      <mat-card-subtitle>From Enums</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="example-card-content">
+        <table mat-table [dataSource]="dataSource1" matSort class="mat-elevation-z8">
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID. </th>
+              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+            </ng-container>
+        
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+        
+            <!-- NumberOfMembers Column -->
+            <ng-container matColumnDef="numberOfMembers">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Members#: </th>
+              <td mat-cell *matCellDef="let element"> {{element.numberOfMembers}} </td>
+            </ng-container>
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+          </table>
+    </mat-card-content>
+  </mat-card>
+</div>

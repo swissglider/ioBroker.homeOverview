@@ -1,55 +1,41 @@
-<h2>Sprint 1 - Version</h2>
-<h3>Details</h3>
-<p>LiveHost: {{hostName}}</p>
-<p>Connected: {{isConnected}}</p>
-<hr>
-<p>Counter: {{counter}}</p>
-<hr>
-<div>
-  <label>Counter:
-    <input [(ngModel)]="counter" placeholder="name" (change)="onChangeCounter(counter)"/>
-  </label>
-</div>
-<hr>
-<p>Error: {{newError}}</p>
-<hr>
-<div class="example-container example-div-center">
-  <mat-form-field>
-    <input matInput placeholder="Input">
-  </mat-form-field>
-
-  <mat-form-field>
-    <textarea matInput placeholder="Textarea"></textarea>
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-select placeholder="Select">
-      <mat-option value="option">Option</mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-<div class="example-div-center">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content class="example-card-content">
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
-</div>
-<hr>
-<p style="font-size:6pt">Updated State ID : {{updatedStateID}}</p>
-<p style="font-size:6pt">State: {{updatedState}}</p>
-<hr>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+      </button>
+      <h1>Home Overview</h1>
+      <span class="menu-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'/mainsite'"> Mainsite </a>
+        <a mat-button [routerLink]="'/counter'"> Counter </a>
+        <a mat-button [routerLink]="'/showrooms'"> Show-Rooms </a>
+        <a mat-button [routerLink]="'/test'"> Test </a>
+  
+      </div>
+    </mat-toolbar-row>
+  
+    <mat-toolbar-row>
+        <span style="font-size: 12px;">ioBroker Home Overview | by Swissglider</span>
+      </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav>
+      <mat-nav-list>
+  
+        <a mat-list-item [routerLink]="'/accounts'"> Accounts </a>
+        <a mat-list-item [routerLink]="'/create-account'"> Create Account </a>
+        <a mat-list-item [routerLink]="'/contacts'"> Contacts </a>
+        <a mat-list-item [routerLink]="'/create-contact'"> Create Contact </a>
+        <a mat-list-item [routerLink]="'/activities'"> Activities </a>
+        <a mat-list-item [routerLink]="'/create-activity'"> Create Activity </a>
+        <a mat-list-item (click)="sidenav.toggle()" href="" mat-list-item>Close</a>
+  
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div style="height: 88vh;">
+  
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

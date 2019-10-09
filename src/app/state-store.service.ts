@@ -3,6 +3,7 @@ import { Subject, BehaviorSubject} from 'rxjs';
 
 import { IobrokerService } from './iobroker.service';
 import { of } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class StateStoreService {
   private storeStateMap = new Map(); // --> key (id) / value (State) <-- state is an observer
   private storeObjectMap = new Map(); // --> key (id) / value (Object) <-- object is an observer
   private storeEnumMap = new Map(); // --> key (id) / value (Enum) <-- enum is an observer
-  private configObs$ = new BehaviorSubject< object >(null); // --> config is a observer
+  private configObs$ = new BehaviorSubject< any >(null); // --> config is a observer
+  private enumArray$ = new BehaviorSubject< Map < string, Subject< any > > >(null);
 
   constructor(private iobrokerService: IobrokerService) {
     // load all states into state map
@@ -27,7 +29,6 @@ export class StateStoreService {
 
     // load config
     this.loadAllConfigIntoObserverMap();
-
   }
 
   private async loadAllStatesIntoObserverMap() {
@@ -37,7 +38,7 @@ export class StateStoreService {
       if (data.hasOwnProperty(id)) {
         const stateIO = data[id];
         if (!this.storeStateMap.has(id)) {
-          const tempStateOb$ = new BehaviorSubject<any>(stateIO);
+          const tempStateOb$ = new BehaviorSubject< any >(stateIO);
           this.storeStateMap.set(id, tempStateOb$);
         }
         this.storeStateMap.get(id).next(stateIO);
@@ -47,7 +48,7 @@ export class StateStoreService {
     this.iobrokerService.getUpdatedState()
       .subscribe(([id, stateIO]) => {
         if (!this.storeStateMap.has(id)) {
-          const tempStateOb$ = new BehaviorSubject<any>(stateIO);
+          const tempStateOb$ = new BehaviorSubject< any >(stateIO);
           this.storeStateMap.set(id, tempStateOb$);
         }
         this.storeStateMap.get(id).next(stateIO);
@@ -61,7 +62,7 @@ export class StateStoreService {
       if (data.hasOwnProperty(id)) {
         const objectIO = data[id];
         if (!this.storeObjectMap.has(id)) {
-          const tempObjectsOb$ = new BehaviorSubject<any>(objectIO);
+          const tempObjectsOb$ = new BehaviorSubject< any >(objectIO);
           this.storeObjectMap.set(id, tempObjectsOb$);
         }
         this.storeObjectMap.get(id).next(objectIO);
@@ -72,7 +73,7 @@ export class StateStoreService {
     this.iobrokerService.getUpdatedObject()
       .subscribe(([id, objectIO]) => {
         if (!this.storeObjectMap.has(id)) {
-          const tempObjectsOb$ = new BehaviorSubject<any>(objectIO);
+          const tempObjectsOb$ = new BehaviorSubject< any >(objectIO);
           this.storeObjectMap.set(id, tempObjectsOb$);
         }
         this.storeObjectMap.get(id).next(objectIO);
@@ -88,12 +89,13 @@ export class StateStoreService {
       if (data.hasOwnProperty(id)) {
         const enumIO = data[id];
         if (!this.storeEnumMap.has(id)) {
-          const tempEnumsOb$ = new BehaviorSubject<any>(enumIO);
+          const tempEnumsOb$ = new BehaviorSubject< any >(enumIO);
           this.storeEnumMap.set(id, tempEnumsOb$);
         }
         this.storeEnumMap.get(id).next(enumIO);
       }
     }
+    this.enumArray$.next(this.storeEnumMap);
   }
 
   private async loadAllConfigIntoObserverMap() {
@@ -104,7 +106,7 @@ export class StateStoreService {
 
   public getStatePerID(id: string):  Subject< any > {
     if (!this.storeStateMap.has(id)) {
-      const tempStateOb$ = new BehaviorSubject< object >(null);
+      const tempStateOb$ = new BehaviorSubject< any >(null);
       this.storeStateMap.set(id, tempStateOb$);
     }
     return this.storeStateMap.get(id);
@@ -112,5 +114,9 @@ export class StateStoreService {
 
   public getConfig(): Subject< any > {
     return this.configObs$;
+  }
+
+  public getEnums(): Subject< Map < string, Subject< any > > >  {
+    return this.enumArray$;
   }
 }
