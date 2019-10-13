@@ -15,28 +15,26 @@
 
 HomeOverview Adapter
 
-## Sprint 2 Overview
+## Sprint 3 Overview
 
-This is the Sprint 2 Version. See also: [Project](https://github.com/swissglider/ioBroker.homeOverview/projects/1?card_filter_query=sprint+2)
+This is the Sprint 3 Version. See also: [Project](https://github.com/swissglider/ioBroker.homeOverview/projects/1?card_filter_query=sprint+3)
 
 ### Backlog
 
 MVP &rightarrow; Show simple page with all status
 
-- [x] Read all light values from ioBroker
-- [x] create simple dynamic html table (angular / vmware clarity)
-- [x] sent all infomration for the table via socket.io
+MVP &rightarrow; Show simple page with all status
+- [ ] Error Message Handling
+- [ ] Create an overview of all the states in ioBroker 
+(lights, temp, hum, motion, pressure, wind, power ....)
 
 ## Sprint 2 - Documentation
 
 >**Node**
-After analyses a lot of WEB Frameworks for angular I decided not to use material but VMWare Clarity.
-The documentation and samples are very good and it fits to my requirements
+ongoing ...
    
 >**Node**
-I decided to use Compodoc for documentation.
-So all the documentation are now to be found on the following link:
-[Github Pages](https://swissglider.github.io/ioBroker.homeOverview/).
+...
 
 ## License
 
