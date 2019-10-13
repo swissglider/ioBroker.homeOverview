@@ -1,13 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-import { StateStoreService } from '../state-store.service'
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  StateStoreService
+} from '../state-store.service'
+import {
+  ClrDatagridSortOrder
+} from '@clr/angular';
 
-export interface RommsElement {
-  id: string;
-  name: string;
-  numberOfMembers: number;
-}
+/**
+ * Shows all the Rooms from IOBroker
+ */
 
 @Component({
   selector: 'app-show-rooms',
@@ -16,32 +20,51 @@ export interface RommsElement {
 })
 export class ShowRoomsComponent implements OnInit {
 
-  displayedColumns1: string[] = ['id', 'name', 'numberOfMembers'];
-  dataSource1;
+  /** the default sort for the web site */
+  descSort = ClrDatagridSortOrder.DESC;
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  /** Array with Room Enums to be showed */
+  new_enums: {
+    id: string,
+    numberOfMembers: number,
+    name: string,
+    members: string,
+    lastUpdate: number
+  } [] = [];
 
-  constructor(private stateStoreService: StateStoreService) { }
+  /** @ignore */
+  constructor(private stateStoreService: StateStoreService) {}
 
+  /** inits all the enums */
   ngOnInit() {
-    this.stateStoreService.getEnums().subscribe((enums)=>{
-      let room_data: RommsElement[] = [];
-      if(enums){
+    this.stateStoreService.getEnums().subscribe((enums) => {
+      if (enums) {
         enums.forEach((value$, key, array) => {
-          if(key.startsWith('enum.rooms.')){
-            value$.subscribe((enum_)=>{
-              if( typeof enum_.common.name === 'object'){
-                room_data.push({id:key, name:enum_.common.name.de, numberOfMembers:enum_.common.members.length});
+          if (key.startsWith('enum.rooms.')) {
+            value$.subscribe((enum_) => {
+              if (typeof enum_.common.name === 'object') {
+                this.new_enums.push({
+                  id: key,
+                  name: enum_.common.name.de,
+                  numberOfMembers: enum_.common.members.length,
+                  members: enum_.common.members.join('\n'),
+                  lastUpdate: enum_.ts
+                });
               } else {
-                room_data.push({id:key, name:enum_.common.name, numberOfMembers:enum_.common.members.length});
+                this.new_enums.push({
+                  id: key,
+                  name: enum_.common.name,
+                  numberOfMembers: enum_.common.members.length,
+                  members: enum_.common.members.join('\n'),
+                  lastUpdate: enum_.ts
+                });
               }
-            })
+            });
+
           }
-        })
+        });
       }
-      this.dataSource1 = new MatTableDataSource(room_data);
-      this.dataSource1.sort = this.sort;
-    })
+    });
   }
 
 }

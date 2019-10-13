@@ -5,6 +5,7 @@ import { CounterComponent } from './counter/counter.component';
 import { MainSiteComponent } from './main-site/main-site.component';
 import { TestComponent } from './test/test.component';
 import { ShowRoomsComponent } from './show-rooms/show-rooms.component';
+import { ShowLightsComponent } from './show-lights/show-lights.component';
 
 const routes: Routes = [
   { path:  '', redirectTo:  'mainsite', pathMatch:  'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'mainsite', component: MainSiteComponent},
   { path: 'test', component: TestComponent},
   { path: 'showrooms', component: ShowRoomsComponent},
+  { path: 'showlights', component: ShowLightsComponent},
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -669,7 +669,6 @@ export class IOBrokerConnection {
             data[res.rows[i].id] = res.rows[i].value;
             enums[res.rows[i].id] = res.rows[i].value;
           }
-
           // Read all adapters for images
           that._socket.emit(
             "getObjectView",

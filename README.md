@@ -15,34 +15,26 @@
 
 HomeOverview Adapter
 
-## Sprint 1 Overview
+## Sprint 2 Overview
 
-This is the Sprint 1 Version. See also: [Project](https://github.com/swissglider/ioBroker.homeOverview/projects/1?card_filter_query=sprint+1)
+This is the Sprint 1 Version. See also: [Project](https://github.com/swissglider/ioBroker.homeOverview/projects/1?card_filter_query=sprint+2)
 
 ### Backlog
 
-MVP &rightarrow; Show simple dynamic state change (angular - socket.io adapter)
-- [x] implement angular client with socket.io to show one state change dynamicly from ioBroker
+MVP &rightarrow; Show simple page with all status
+- [x] Read all light values from ioBroker
+- [x] create simple dynamic html table (angular / vmware clarity)
+- [x] sent all infomration for the table via socket.io
 
-## Sprint 1 - Documentation
+## Sprint 2 - Documentation
 
 >**Node**
-States are all Observibles, so they are always up to date
+After analyses a lot of WEB Frameworks for angular I decided not to use material but VMWare Clarity.
+The documentation and samples are very good and it fits to my requirements
 
-1.   initiate and setup the connection to ioBroker
-2.   load and store states/objects/enums   
-  1.1. load all states/objects and enums from ioBroker    
-  1.2. store the Obeserver to all live states/objects/enums to the DataStore   
-3.   after initiation, homepage.component askes for the counter state
-4.   after changing state on the GUI it has to be set
-5.   and safe it to the ioBroker
-
->:arrow_forward: because the counter state saved on the state-store is a live observer,
-and the ioBroker.service monitors all changes,
-the state in the store is updated automaticaly   
->:arrow_forward: ioBrokerConnection do handle the whole connection with the ioBroker    
->:arrow_forward: ioBrokerConnection is an adaptation of the iobroker conn.js sample   
->:arrow_forward: the ngx-socket-io is used
+>**Node**
+I decided to use Compodoc for documentation.
+So all the documentation are now to be found on the following link:
 
 
 ![cached image](https://plantuml-server.kkeisuke.app/svg/ZPB1JiCm343l_Wfhf_NGb06d7j1Wdy0H8PIrfWHQkqfSBcZ_JjPMj1jb8YShZj-pvMo3MgzTKmEyUjiGhkwvwchhNrRu1HZFqviqrDgAJ25DAqoipqF2oOEN3_8caFzq1PrTxuIP2dN2OoAgbDAWukcqfBHgzpP4-Up9Qj1FbPYXxDyZCGR4NJFK7k000BzxmJIzM-m5SxnAqB5JDCPWCMJwk1PRegrhx7qX6tGXEze2BFP_gfckSzoOpQZvYuXhooLsRNbC9PVuo_Ftaki4-mfioGSNDAvdbC7IvcQySrEEaLMHFlQoTOnsqh6IJowGbYQ_YItzOC8Sy_yjvNWxKG2sn6NyfDy0.svg)

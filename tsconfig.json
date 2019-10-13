@@ -22,5 +22,12 @@
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  }
+  },
+  "exclude": [
+    "src/test.ts",
+    "src/**/*.spec.ts",
+    "e2e/**",
+    "src/lib/ioBrokerConnection.ts",
+    "src/environments/**/*.ts"
+  ]
 }

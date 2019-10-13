@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { HomepageComponent } from './homepage/homepage.component';
-import {config} from './iobroker.service';
+import {config, IobrokerService} from './iobroker.service';
 import { LoadScriptDirectiveDirective } from './load-script-directive.directive';
 import { CounterComponent } from './counter/counter.component';
 import { TestComponent } from './test/test.component';
@@ -53,6 +53,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { ShowRoomsComponent } from './show-rooms/show-rooms.component';
 import { StateStoreService } from './state-store.service';
+import { ShowLightsComponent } from './show-lights/show-lights.component';
+import { ClarityModule } from '@clr/angular';
+import { SelectorServiceService } from './selector-service.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +65,8 @@ import { StateStoreService } from './state-store.service';
     CounterComponent,
     TestComponent,
     MainSiteComponent,
-    ShowRoomsComponent
+    ShowRoomsComponent,
+    ShowLightsComponent
   ],
   imports: [
     BrowserModule,
@@ -112,6 +116,7 @@ import { StateStoreService } from './state-store.service';
     PortalModule,
     ScrollingModule,
     AppRoutingModule,
+    ClarityModule
   ],
   providers: [
     // StateStoreService,
@@ -121,6 +126,8 @@ import { StateStoreService } from './state-store.service';
     //   deps: [StateStoreService],
     //   multi: true,
     // }
+    IobrokerService,
+    SelectorServiceService,
   ],
   bootstrap: [AppComponent]
 })

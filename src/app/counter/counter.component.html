@@ -1,20 +1,40 @@
-<div class="example-container example-div-center">
-  <mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Counter</mat-card-title>
-      <mat-card-subtitle>ioBroker Counter</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://visualpharm.com/assets/221/Counter-595b40b75ba036ed117d5a87.svg" alt="Counter">
-    <mat-card-content>
-      <p>Counter: {{counter}}</p>
-      <label>Counter:
-        <input [(ngModel)]="counter" placeholder="name" (change)="onChangeCounter(counter)" />
-      </label>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>LIKE</button>
-      <button mat-button>SHARE</button>
-    </mat-card-actions>
-  </mat-card>
+<div class="clr-row">
+  <div class="clr-col-12 clr-col-sm-5">
+    <div class="card">
+      <div class="card-header danger">
+        <clr-icon shape="dollar" class="is-info is-solid" size="24"></clr-icon>
+        Counter
+      </div>
+      <div class="card-block">
+        <h4 class="card-title">ioBroker Counter</h4>
+        <hr>
+        <div class="card-text">
+          Count =  <span class="badge badge-blue">{{counter}}</span>
+        </div>
+        <clr-input-container class="clr-error">
+          <label>Counter</label>
+          <input placeholder="{{counter}}" type='number' clrInput [(ngModel)]="newCounter"
+            (change)="onChangeCounter(counter)" />
+          <clr-control-helper>Set the Counter and enter</clr-control-helper>
+          <clr-control-error>This field is required!</clr-control-error>
+        </clr-input-container>
+      </div>
+      <div class="card-footer">
+        <div class="btn-group btn-primary">
+          <button class="btn" (click)="counterDecrement()">
+            <clr-icon shape="minus"></clr-icon>
+            <span class="clr-icon-title">Settings</span>
+          </button>
+          <button class="btn btn-success" (click)="counterReset()">
+            <clr-icon shape="undo"></clr-icon>
+            <span class="clr-icon-title">Settings</span>
+          </button>
+          <button class="btn btn-danger" (click)="counterIncrement()">
+            <clr-icon shape="plus"></clr-icon>
+            <span class="clr-icon-title">Settings</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

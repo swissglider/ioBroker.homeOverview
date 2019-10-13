@@ -5,17 +5,24 @@ import { IobrokerService } from './iobroker.service';
 import { of } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
+/** should no longer be used */
 @Injectable({
   providedIn: 'root'
 })
 export class StateStoreService {
 
+  /** @ignore */
   private storeStateMap = new Map(); // --> key (id) / value (State) <-- state is an observer
+  /** @ignore */
   private storeObjectMap = new Map(); // --> key (id) / value (Object) <-- object is an observer
+  /** @ignore */
   private storeEnumMap = new Map(); // --> key (id) / value (Enum) <-- enum is an observer
+  /** @ignore */
   private configObs$ = new BehaviorSubject< any >(null); // --> config is a observer
-  private enumArray$ = new BehaviorSubject< Map < string, Subject< any > > >(null);
+  /** @ignore */
+  private enumMap$ = new BehaviorSubject< Map < string, Subject< any > > >(null);
 
+  /** @ignore */
   constructor(private iobrokerService: IobrokerService) {
     // load all states into state map
     this.loadAllStatesIntoObserverMap();
@@ -31,6 +38,7 @@ export class StateStoreService {
     this.loadAllConfigIntoObserverMap();
   }
 
+  /** @ignore */
   private async loadAllStatesIntoObserverMap() {
     // load all states from ioBroker
     const data: any = await this.iobrokerService.getStates(null);
@@ -55,6 +63,7 @@ export class StateStoreService {
       });
   }
 
+  /** @ignore */
   private async loadAllObjectsIntoObserverMap() {
     // load all objects from ioBroker
     const data: any = await this.iobrokerService.getObjects();
@@ -80,8 +89,7 @@ export class StateStoreService {
       });
   }
 
-
-
+  /** @ignore */
   private async loadAllEnumsIntoObserverMap() {
     // load all enums from ioBroker
     const data: any = await this.iobrokerService.getEnums();
@@ -95,15 +103,17 @@ export class StateStoreService {
         this.storeEnumMap.get(id).next(enumIO);
       }
     }
-    this.enumArray$.next(this.storeEnumMap);
+    this.enumMap$.next(this.storeEnumMap);
   }
 
+  /** @ignore */
   private async loadAllConfigIntoObserverMap() {
     // load all config from ioBroker
     const data: any = await this.iobrokerService.getConfig();
     this.configObs$.next(data);
   }
 
+  /** @ignore */
   public getStatePerID(id: string):  Subject< any > {
     if (!this.storeStateMap.has(id)) {
       const tempStateOb$ = new BehaviorSubject< any >(null);
@@ -112,11 +122,13 @@ export class StateStoreService {
     return this.storeStateMap.get(id);
   }
 
+  /** @ignore */
   public getConfig(): Subject< any > {
     return this.configObs$;
   }
 
+  /** @ignore */
   public getEnums(): Subject< Map < string, Subject< any > > >  {
-    return this.enumArray$;
+    return this.enumMap$;
   }
 }

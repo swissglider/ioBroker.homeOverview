@@ -1,37 +1,44 @@
-<div class="example-container example-div-center">
-  
-</div>
-<div class="example-container example-div-center">
-<mat-card class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>All Rooms</mat-card-title>
-      <mat-card-subtitle>From Enums</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content class="example-card-content">
-        <table mat-table [dataSource]="dataSource1" matSort class="mat-elevation-z8">
+<clr-datagrid class="datagrid-compact">
 
-            <!-- ID Column -->
-            <ng-container matColumnDef="id">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> ID. </th>
-              <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-            </ng-container>
-        
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-        
-            <!-- NumberOfMembers Column -->
-            <ng-container matColumnDef="numberOfMembers">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Members#: </th>
-              <td mat-cell *matCellDef="let element"> {{element.numberOfMembers}} </td>
-            </ng-container>
-        
-            <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
-          </table>
-    </mat-card-content>
-  </mat-card>
-</div>
+  <clr-dg-placeholder>Still loading!</clr-dg-placeholder>
+
+  <clr-dg-column [clrDgField]="'name'" [clrDgSortOrder]="descSort">Name</clr-dg-column>
+  <clr-dg-column [clrDgField]="'numberOfMembers'" [clrDgColType]="'number'">Members#:</clr-dg-column>
+
+  <clr-dg-row *clrDgItems="let new_enum of new_enums">
+    <clr-dg-cell>{{new_enum.name}}</clr-dg-cell>
+    <clr-dg-cell>{{new_enum.numberOfMembers}}</clr-dg-cell>
+    <clr-dg-row-detail *clrIfExpanded [clrDgReplace]="false">
+      <div class="card">
+        <div class="card-block">
+          <div class="card-text">
+            <table class="table table-vertical table-noborder table-compact">
+              <tbody>
+                <tr>
+                  <th>ID:</th>
+                  <td>{{new_enum.id}}</td>
+                </tr>
+                <tr>
+                  <th>Last Update:</th>
+                  <td>{{new_enum.lastUpdate}}</td>
+                </tr>
+                <tr>
+                  <th>Members:</th>
+                  <td>{{new_enum.members}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </clr-dg-row-detail>
+  </clr-dg-row>
+
+  <clr-dg-footer>
+    <clr-dg-pagination #pagination [clrDgPageSize]="10">
+      <clr-dg-page-size [clrPageSizeOptions]="[5,10,15,20]">Users per page</clr-dg-page-size>
+      {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+      of {{pagination.totalItems}} users
+    </clr-dg-pagination>
+  </clr-dg-footer>
+</clr-datagrid>

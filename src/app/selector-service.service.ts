@@ -17,34 +17,58 @@ import {
   IobrokerService
 } from './iobroker.service';
 
+/**
+ * Datatype to store the ioBroker-State and the corresponding ioBroker-Object. 
+ * It holds the stateObject also as a Observer to automaticly update if something changes
+ */
 export interface IstateObjectContainer {
+  /** ioBroker id that is representing */
   id: string;
+  /** ioState that corresponde to the ioBroker id */
   ioState: Object;
+  /** ioObject that corresponde to the ioBroker id */
   ioObject: Object;
-  stateObjctContainer$ : Subject< [Object, Object] >; // Subject < [state, Object] >
+  /** observer for that ioBroker id */
+  stateObjectContainer$ : Subject< [Object, Object] >; // Subject < [state, Object] >
 }
 
+/** Map with all all IstateObjectConainers */
 export type TstateObjectContainerMap = Map < string, IstateObjectContainer > ;
+
+/** selector Function that selects the needed ioBroker id */
 export type TselectionFN = (IstateObjectContainer) => boolean;
 
+/** represents a selecetion with th eioBroker ID, the Observer of the whole Container the ContainerMap it self and the selection function */
 export interface Iselection {
+  /** ioBroker id that is representing */
   name: string;
+  /** observer for the stateObjectConainer */
   mapChangeObserver$: Subject <IstateObjectContainer>;
+  /** container Map */
   stateObjectContainerMap: TstateObjectContainerMap;
+  /** selection Function */
   selectionFN: TselectionFN;
 }
 
+/**
+ * Selection Service to get the selection with the fitting IOBroker statesContainers
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class SelectorServiceService {
 
+  /** the Map with all the objectContainer, id=ioBroker id */
   private stateObjectContainerMap: TstateObjectContainerMap = new Map();
+  /** the Map with all the registered selections, id=selectionName */
   private selectionMap: Map < string, Iselection > = new Map(); // Mapp(<id:string,Iselection)
 
+  /** all ioBroker states, id=ioBroker id */
   private storeStateMap: Map < string, Object > = new Map(); // --> key (id) / value (State)
+  /** all ioBroker objects, id=ioBroker id */
   private storeObjectMap: Map < string, Object > = new Map(); // --> key (id) / value (Object)
 
+  /** @ignore */
   constructor(private iobrokerService: IobrokerService) {
     this.addAllStateObjects();
     this.checkStateUpdate();
@@ -105,23 +129,23 @@ export class SelectorServiceService {
   /**
    * create or updates the StateObjectContainer and updates also the StateObjectContainer Observer
    * 
-   * @param id id of the ioBroker state/object
-   * @param stateIO ioBroker state to be set into the stateObjectContainer
+   * @param {string} id id of the ioBroker state/object
+   * @param {Object} stateIO ioBroker state to be set into the stateObjectContainer
    */
   private addStateObjectToContainer(id: string, stateIO: Object) {
     if (this.stateObjectContainerMap.has(id)) {
       let stateContainer: IstateObjectContainer = this.stateObjectContainerMap.get(id);
       stateContainer.ioState = stateIO;
       stateContainer.ioObject = this.storeObjectMap.has(id) ? this.storeObjectMap.get(id) : null;
-      stateContainer.stateObjctContainer$.next([stateContainer.ioState, stateContainer.ioObject]);
+      stateContainer.stateObjectContainer$.next([stateContainer.ioState, stateContainer.ioObject]);
     } else {
       let stateContainer: IstateObjectContainer = {
         id: id,
         ioState: stateIO,
         ioObject: this.storeObjectMap.has(id) ? this.storeObjectMap.get(id) : null,
-        stateObjctContainer$: null,
+        stateObjectContainer$: null,
       };
-      stateContainer.stateObjctContainer$ = new BehaviorSubject([stateContainer.ioState, stateContainer.ioObject]);
+      stateContainer.stateObjectContainer$ = new BehaviorSubject([stateContainer.ioState, stateContainer.ioObject]);
       this.stateObjectContainerMap.set(id, stateContainer);
     }
   }
@@ -129,7 +153,7 @@ export class SelectorServiceService {
   /**
    * Updates the StateObjectContainer in all Selections already registered
    * 
-   * @param id id of the ioBroker state/object
+   * @param {string} id id of the ioBroker state/object
    */
   private setUpdateStateObjectContainer$(id: string) {
 
@@ -139,7 +163,7 @@ export class SelectorServiceService {
   }
 
   /**
-   * 
+   * Updates the selections if ioBroker state/object changes
    * @param id id of the ioBroker state/object
    * @param selection creates or updates the selection map if selection fits the updated state
    */
@@ -162,6 +186,12 @@ export class SelectorServiceService {
     selection.mapChangeObserver$.next(this.stateObjectContainerMap.get(id));
   }
 
+  /**
+   * Returns the SelectionMap for all the fitting statesContainers (Observers)
+   * @param {string} name name of the 
+   * @param {Function} selectionFN selection Funtion that returns true or false if the ioBroker id (States/Object) fits the criteria or not
+   * @returns {Iselection} returns the selection with the observers corresponding to the selection
+   */
   public getSelector(name: string, selectionFN: TselectionFN): Iselection {
     // id selection is alread created, return directly the observerMap$
     if(this.selectionMap.has(name)) {
@@ -188,7 +218,6 @@ export class SelectorServiceService {
     }
 
     this.selectionMap.set(name, selection);
-
     // returns the observerMap$
     return selection;
   }
