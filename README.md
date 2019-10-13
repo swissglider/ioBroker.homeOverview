@@ -28,7 +28,7 @@ MVP &rightarrow; Show simple page with all status
 - [ ] Create an overview of all the states in ioBroker 
 (lights, temp, hum, motion, pressure, wind, power ....)
 
-## Sprint 2 - Documentation
+## Sprint 3 - Documentation
 
 >**Node**
 ongoing ...
