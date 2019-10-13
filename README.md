@@ -17,11 +17,12 @@ HomeOverview Adapter
 
 ## Sprint 2 Overview
 
-This is the Sprint 1 Version. See also: [Project](https://github.com/swissglider/ioBroker.homeOverview/projects/1?card_filter_query=sprint+2)
+This is the Sprint 2 Version. See also: [Project](https://github.com/swissglider/ioBroker.homeOverview/projects/1?card_filter_query=sprint+2)
 
 ### Backlog
 
 MVP &rightarrow; Show simple page with all status
+
 - [x] Read all light values from ioBroker
 - [x] create simple dynamic html table (angular / vmware clarity)
 - [x] sent all infomration for the table via socket.io
@@ -31,15 +32,10 @@ MVP &rightarrow; Show simple page with all status
 >**Node**
 After analyses a lot of WEB Frameworks for angular I decided not to use material but VMWare Clarity.
 The documentation and samples are very good and it fits to my requirements
-
 >**Node**
 I decided to use Compodoc for documentation.
 So all the documentation are now to be found on the following link:
-
-
-![cached image](https://plantuml-server.kkeisuke.app/svg/ZPB1JiCm343l_Wfhf_NGb06d7j1Wdy0H8PIrfWHQkqfSBcZ_JjPMj1jb8YShZj-pvMo3MgzTKmEyUjiGhkwvwchhNrRu1HZFqviqrDgAJ25DAqoipqF2oOEN3_8caFzq1PrTxuIP2dN2OoAgbDAWukcqfBHgzpP4-Up9Qj1FbPYXxDyZCGR4NJFK7k000BzxmJIzM-m5SxnAqB5JDCPWCMJwk1PRegrhx7qX6tGXEze2BFP_gfckSzoOpQZvYuXhooLsRNbC9PVuo_Ftaki4-mfioGSNDAvdbC7IvcQySrEEaLMHFlQoTOnsqh6IJowGbYQ_YItzOC8Sy_yjvNWxKG2sn6NyfDy0.svg)
-
-
+[Github Pages](https://swissglider.github.io/ioBroker.homeOverview/).
 
 ## License
 
