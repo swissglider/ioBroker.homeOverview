@@ -28,3 +28,4 @@ coverage
 /platforms
 /plugins
 /.vscode
+iobroker.homeoverview-*

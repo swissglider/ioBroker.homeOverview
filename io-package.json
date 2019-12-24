@@ -1,6 +1,6 @@
 {
 	"common": {
-		"name": "template",
+		"name": "homeoverview",
 		"version": "0.0.1",
 		"news": {
 			"0.0.1": {
@@ -16,30 +16,14 @@
 				"zh-cn": "首次出版"
 			}
 		},
-		"title": "Template (TypeScript)",
+		"title": "Home Overview",
 		"titleLang": {
-			"en": "Template (TypeScript)",
-			"de": "Vorlage (TypeScript)",
-			"ru": "Шаблон (TypeScript)",
-			"pt": "Modelo (TypeScript)",
-			"nl": "Sjabloon (TypeScript)",
-			"fr": "Modèle (TypeScript)",
-			"it": "Modello (TypeScript)",
-			"es": "Plantilla (TypeScript)",
-			"pl": "Szablon (TypeScript)",
-			"zh-cn": "模板（TypeScript）"
+			"en": "Home Overview",
+			"de": "Home Overview"
 		},
 		"desc": {
-			"en": "Template for adapter development",
-			"de": "Vorlage für die Adapterentwicklung",
-			"ru": "Шаблон для разработки адаптера",
-			"pt": "Modelo para desenvolvimento de adaptadores",
-			"nl": "Sjabloon voor adapterontwikkeling",
-			"fr": "Modèle pour le développement de l'adaptateur",
-			"it": "Modello per lo sviluppo dell'adattatore",
-			"es": "Plantilla para desarrollo de adaptadores",
-			"pl": "Szablon do opracowania adaptera",
-			"zh-cn": "适配器开发的模板"
+			"en": "Home Overview",
+			"de": "Home Overview"
 		},
 		"authors": [
 			"Author <author@mail.com>"
@@ -66,16 +50,8 @@
 		"adminTab": {
 			"singleton": true,
 			"name": {
-				"en": "Template (TypeScript)",
-				"de": "Vorlage (TypeScript)",
-				"ru": "Шаблон (TypeScript)",
-				"pt": "Modelo (TypeScript)",
-				"nl": "Sjabloon (TypeScript)",
-				"fr": "Modèle (TypeScript)",
-				"it": "Modello (TypeScript)",
-				"es": "Plantilla (TypeScript)",
-				"pl": "Szablon (TypeScript)",
-				"zh-cn": "模板（TypeScript）"
+				"en": "Home Overview",
+				"de": "Home Overview"
 			},
 			"link": "",
 			"fa-icon": "info"
